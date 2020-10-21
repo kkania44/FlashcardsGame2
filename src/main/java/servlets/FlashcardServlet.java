@@ -6,12 +6,14 @@ import services.FlashcardService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@WebServlet("/game")
 public class FlashcardServlet extends HttpServlet {
 
     private final FlashcardService flashcardService;
@@ -29,4 +31,6 @@ public class FlashcardServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/question.jsp");
         requestDispatcher.forward(req, resp);
     }
+
+
 }

@@ -11,6 +11,10 @@
     <title>Flashcards Game</title>
 </head>
 <body>
-
+    <div class="qst_container" style="font-size: medium; padding-left: 100px; padding-top: 100px">
+        <p>Pytanie:
+            <br>
+            ${sessionScope.card.definition}</p>
+    </div>
 </body>
 </html>
