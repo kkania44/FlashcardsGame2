@@ -12,5 +12,12 @@
 </head>
 <body>
     <p>${message}</p>
+    <% String points = session.getAttribute("points").toString();
+        out.println("Punkty: " +points);
+    %>
+    <br>
+    <form action="${pageContext.request.contextPath}/game" method="get">
+        <button type="submit" class="btn btn-default">Kolejna próba</button>
+    </form>
 </body>
 </html>

@@ -15,10 +15,11 @@
         <p>Pytanie:
             <br>
             ${sessionScope.card.definition}</p>
-    </div>
     <form action="${pageContext.request.contextPath}/game" method="post">
         <input type="text" name="answer">
-        <button type="submit" value="Zatwierdź"></button>
+        <br>
+        <button type="submit">Zatwierdź</button>
     </form>
+    </div>
 </body>
 </html>

@@ -2,6 +2,7 @@ package servlets;
 
 
 import entities.Flashcard;
+import entities.PointsCounter;
 import services.FlashcardService;
 
 import javax.servlet.RequestDispatcher;
@@ -24,6 +25,10 @@ public class FlashcardServlet extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("card", card);
 
+        if (session.getAttribute("points") == null) {
+            session.setAttribute("points", new PointsCounter());
+        }
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/question.jsp");
         requestDispatcher.forward(req, resp);
     }
@@ -33,14 +38,17 @@ public class FlashcardServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Flashcard card = (Flashcard) session.getAttribute("card");
         session.removeAttribute("card");
+        PointsCounter points = (PointsCounter) session.getAttribute("points");
 
         String answer = req.getParameter("answer");
         boolean isCorrect = card.checkAnswer(answer);
 
         if (isCorrect) {
             req.setAttribute("message", "Poprawna odpowiedź");
+            points.correctAnswer();
         } else {
             req.setAttribute("message", "Zła odpowiedź");
+            points.wrongAnswer();
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/result.jsp");
