@@ -16,11 +16,7 @@ import java.io.IOException;
 @WebServlet("/game")
 public class FlashcardServlet extends HttpServlet {
 
-    private final FlashcardService flashcardService;
-
-    public FlashcardServlet(FlashcardService flashcardService) {
-        this.flashcardService = flashcardService;
-    }
+    private final FlashcardService flashcardService = new FlashcardService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,5 +28,22 @@ public class FlashcardServlet extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        Flashcard card = (Flashcard) session.getAttribute("card");
+        session.removeAttribute("card");
 
+        String answer = req.getParameter("answer");
+        boolean isCorrect = card.checkAnswer(answer);
+
+        if (isCorrect) {
+            req.setAttribute("message", "Poprawna odpowiedź");
+        } else {
+            req.setAttribute("message", "Zła odpowiedź");
+        }
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/result.jsp");
+        dispatcher.forward(req, resp);
+    }
 }

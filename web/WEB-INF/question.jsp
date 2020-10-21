@@ -11,10 +11,14 @@
     <title>Flashcards Game</title>
 </head>
 <body>
-    <div class="qst_container" style="font-size: medium; padding-left: 100px; padding-top: 100px">
+    <div class="qst_container" style="font-size: 15px; padding-left: 50px; padding-top: 50px">
         <p>Pytanie:
             <br>
             ${sessionScope.card.definition}</p>
     </div>
+    <form action="${pageContext.request.contextPath}/game" method="post">
+        <input type="text" name="answer">
+        <button type="submit" value="Zatwierdź"></button>
+    </form>
 </body>
 </html>
