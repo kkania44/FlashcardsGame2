@@ -15,7 +15,7 @@ public class FlashcardService {
         cards.add(new Flashcard("Stolica Hiszpanii", "MADRYT"));
         cards.add(new Flashcard("Stolica Czech", "PRAGA"));
         cards.add(new Flashcard("Stolica Urugwaju", "MONTEVIDEO"));
-        cards.add(new Flashcard("Stolica KANADY", "OTTAWA"));
+        cards.add(new Flashcard("Stolica Kanady", "OTTAWA"));
     }
 
     public Flashcard getRandomFlashcard() {
