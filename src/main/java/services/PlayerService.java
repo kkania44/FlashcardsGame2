@@ -25,4 +25,13 @@ public class PlayerService {
         return null;
     }
 
+    public Player addNewPlayer(String name) {
+        if (getPlayer(name) == null) {
+            Player player = new Player(name);
+            players.add(player);
+            return player;
+        }
+        return null;
+    }
+
 }
