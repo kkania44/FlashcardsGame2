@@ -19,5 +19,8 @@
     <form action="${pageContext.request.contextPath}/game" method="get">
         <button type="submit" class="btn btn-default">Kolejna próba</button>
     </form>
+    <form action="${pageContext.request.contextPath}/logout" method="get">
+        <button type="submit">Koniec gry</button>
+    </form>
 </body>
 </html>

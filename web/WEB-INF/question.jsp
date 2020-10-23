@@ -11,15 +11,18 @@
     <title>Flashcards Game</title>
 </head>
 <body>
-    <div class="qst_container" style="font-size: 15px; padding-left: 50px; padding-top: 50px">
-        <p>Pytanie:
-            <br>
-            ${sessionScope.card.definition}</p>
+<div class="qst_container" style="font-size: 15px; padding-left: 50px; padding-top: 50px">
+    <p>Pytanie:
+        <br>
+        ${sessionScope.card.definition}</p>
     <form action="${pageContext.request.contextPath}/game" method="post">
         <input type="text" name="answer">
         <br>
         <button type="submit">Zatwierdź</button>
     </form>
-    </div>
+    <form action="${pageContext.request.contextPath}/logout" method="get">
+        <button type="submit">Koniec gry</button>
+    </form>
+</div>
 </body>
 </html>

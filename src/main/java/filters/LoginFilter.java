@@ -1,3 +1,5 @@
+package filters;
+
 import entities.Player;
 
 import javax.servlet.*;
@@ -9,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = "/game")
-public class filters extends HttpFilter {
+public class LoginFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
