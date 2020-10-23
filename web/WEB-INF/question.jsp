@@ -20,7 +20,7 @@
         <br>
         <button type="submit">Zatwierdź</button>
     </form>
-    <form action="${pageContext.request.contextPath}/logout" method="get">
+    <form action="${pageContext.request.contextPath}/exit" method="get">
         <button type="submit">Koniec gry</button>
     </form>
 </div>

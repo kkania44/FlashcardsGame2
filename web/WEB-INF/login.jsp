@@ -11,9 +11,17 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="${pageContext.request.contextPath}/join" method="post">
         Nazwa gracza: <input type="text" name="name">
         <button type="submit">Rozpocznij grę</button>
     </form>
+    <%
+    String message = (String)request.getAttribute("message");
+    if(message != null) {
+        out.println(message);
+    };
+    %>
+    <br>
+    <a href="${pageContext.request.contextPath}/start">Nowy gracz</a>
 </body>
 </html>
