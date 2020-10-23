@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/join")
+public class JoinGameServlet extends HttpServlet {
 
     private final PlayerService playerService = new PlayerService();
 
@@ -33,7 +33,10 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("player", player);
             resp.sendRedirect("game");
         } else {
-            resp.sendRedirect("login");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/login.jsp");
+            String message = "Gracz o tej nazwie nie istnieje.";
+            req.setAttribute("message", message);
+            dispatcher.forward(req, resp);
         }
     }
 }
